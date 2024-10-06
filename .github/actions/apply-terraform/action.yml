@@ -28,6 +28,7 @@ runs:
         echo "ARM_CLIENT_ID=$(echo $AZURE_CREDENTIALS | jq -r .clientId)" >> $GITHUB_ENV
         echo "ARM_SUBSCRIPTION_ID=$(echo $AZURE_CREDENTIALS | jq -r .subscriptionId)" >> $GITHUB_ENV
         echo "ARM_TENANT_ID=$(echo $AZURE_CREDENTIALS | jq -r .tenantId)" >> $GITHUB_ENV
+        echo "APPLICATION_NAME=$(echo ${{ github.repository }} | cut -d'/' -f2)" >> $GITHUB_ENV
       shell: bash
     - name: Setup Terraform
       uses: hashicorp/setup-terraform@v3
@@ -71,7 +72,8 @@ runs:
         -input=false \
         -auto-approve \
         -var="terraform_storage_account=$TF_STORAGE_ACCOUNT" \
-        -var="environment=$ENVIRONMENT"
+        -var="environment=$ENVIRONMENT" \
+        -var="application_name=$APPLICATION_NAME"
       shell: bash
       working-directory: '${{ github.workspace }}/terraform'
     - name: Get output data from Terraform
