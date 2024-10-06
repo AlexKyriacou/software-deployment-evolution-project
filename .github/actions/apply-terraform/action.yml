@@ -54,13 +54,13 @@ runs:
         export ARM_CLIENT_SECRET=$(echo $AZURE_CREDENTIALS | jq -r .clientSecret)
         for i in {1..30}; do terraform init \
         -input=false \
-        -backend-config="resource_group_name=$RESOURCE_GROUP_NAME" \
+        -backend-config="resource_group_name=${{ inputs.resource_group_name }}" \
         -backend-config="storage_account_name=$TF_STORAGE_ACCOUNT" \
         -backend-config="container_name=tfstate" \
         -backend-config="key=$ENVIRONMENT.terraform.tfstate" \
         && break || sleep 10; done
       shell: bash
-      working-directory: '${{ github.workspace }}'
+      working-directory: '${{ github.workspace }}/terraform'
     - name: Apply Terraform
       env:
         AZURE_CREDENTIALS: ${{ inputs.azure_credentials }}
@@ -73,7 +73,7 @@ runs:
         -var="terraform_storage_account=$TF_STORAGE_ACCOUNT" \
         -var="environment=$ENVIRONMENT"
       shell: bash
-      working-directory: '${{ github.workspace }}'
+      working-directory: '${{ github.workspace }}/terraform'
     - name: Get output data from Terraform
       id: terraform-output
       env:
@@ -82,7 +82,7 @@ runs:
         export ARM_CLIENT_SECRET=$(echo $AZURE_CREDENTIALS | jq -r .clientSecret)
         echo $(terraform output -json) > terraform-output.json
         echo "resource_group=$(jq -r .resource_group.value terraform-output.json)" >> $GITHUB_OUTPUT
-      working-directory: '${{ github.workspace }}'
+      working-directory: '${{ github.workspace }}/terraform'
       shell: bash
     - name: Disable local IP access to the Storage Account
       uses: azure/CLI@v2
