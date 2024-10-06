@@ -45,3 +45,4 @@ jobs:
           azure_credentials: ${{ secrets.AZURE_CREDENTIALS }}
           tf_storage_account: ${{ secrets.TF_STORAGE_ACCOUNT }}
           resource_group_name: ${{ secrets.RESOURCE_GROUP_NAME }}
+          container_registry_name: ${{ secrets.CONTAINER_REGISTRY_NAME }}

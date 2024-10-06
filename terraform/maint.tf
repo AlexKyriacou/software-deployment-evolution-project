@@ -27,4 +27,14 @@ resource "azurerm_resource_group" "main" {
   location = var.location
 }
 
-
+module "application" {
+  source                      = "./modules/app-service"
+  resource_group              = azurerm_resource_group.main.name
+  application_name            = var.application_name
+  environment                 = var.environment
+  location                    = var.location
+  container_registry_name     = var.container_registry_name
+  container_registry_username = var.container_registry_username
+  container_registry_password = var.container_registry_password
+  container_tag               = var.container_tag
+}
