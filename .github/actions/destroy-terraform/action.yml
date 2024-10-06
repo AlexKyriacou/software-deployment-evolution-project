@@ -10,6 +10,9 @@ inputs:
   resource_group_name:
     description: 'Resource group name used for the Terraform backend configuration, stored in a secret on GitHub repository'
     required: true
+  container_registry_name:
+    description: 'Container Registry name, stored in a secret on GitHub repository'
+    required: true
 outputs: 
   resource_group: 
     description: 'Resource group name where the resources have been deployed'
@@ -71,7 +74,11 @@ runs:
         -input=false \
         -auto-approve \
         -var="environment=$ENVIRONMENT" \
-        -var="application_name=$APPLICATION_NAME"
+        -var="application_name=$APPLICATION_NAME" \
+        -var="container_registry_name=${{ inputs.container_registry_name }}" \
+        -var="container_registry_username=$ARM_CLIENT_ID" \
+        -var="container_registry_password=$ARM_CLIENT_SECRET" \
+        -var="container_tag=${{ github.sha }}"
       shell: bash
       working-directory: '${{ github.workspace }}/terraform'
     - name: Disable local IP access to the Storage Account
@@ -81,4 +88,4 @@ runs:
       with:
         azcliversion: 2.58.0
         inlineScript: |
-          az storage account update --name $TF_STORAGE_ACCOUNT --default-action Allow
+          az storage account update --name $TF_STORAGE_ACCOUNT --default-action Deny
