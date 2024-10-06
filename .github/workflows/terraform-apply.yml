@@ -1,0 +1,21 @@
+name: GitOps
+
+on:
+  push:
+    branches:
+      - '*'
+
+jobs:
+  build-and-deploy:
+    runs-on: ubuntu-22.04
+    outputs:
+      resource_group: ${{ steps.infrastructure-deployment.outputs.resource_group }}
+    steps:
+      - uses: actions/checkout@v4
+      - name: Apply Terraform configuration
+        id: infrastructure-deployment
+        uses: ./.github/actions/apply-terraform
+        with:
+          azure_credentials: ${{ secrets.AZURE_CREDENTIALS }}
+          tf_storage_account: ${{ secrets.TF_STORAGE_ACCOUNT }}
+          resource_group_name: ${{ secrets.RESOURCE_GROUP_NAME }}
