@@ -78,7 +78,7 @@ runs:
         -var="container_registry_name=${{ inputs.container_registry_name }}" \
         -var="container_registry_username=$ARM_CLIENT_ID" \
         -var="container_registry_password=$ARM_CLIENT_SECRET" \
-        -var="container_registry_tag=${{ github.sha }}"
+        -var="container_tag=${{ github.sha }}"
       shell: bash
       working-directory: '${{ github.workspace }}/terraform'
     - name: Get output data from Terraform
