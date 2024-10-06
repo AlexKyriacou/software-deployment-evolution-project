@@ -45,7 +45,7 @@ resource "azurerm_linux_web_app" "application" {
     application_stack {
       //The docker image, including tag, to be used. e.g. appsvc/staticsite:latest
       docker_image_name        = "${var.application_name}/${var.application_name}:${var.container_tag}"
-      docker_registry_url      = "${var.container_registry_name}.azurecr.io"
+      docker_registry_url      = "https://${var.container_registry_name}.azurecr.io"
       docker_registry_password = var.container_registry_password
       docker_registry_username = var.container_registry_username
     }
