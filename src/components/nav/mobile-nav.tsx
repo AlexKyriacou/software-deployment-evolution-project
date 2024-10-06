@@ -41,7 +41,7 @@ export function MobileNav() {
             key={"/"}
             href={"/"}
             onOpenChange={setOpen}
-            className="py-2"
+            className="pb-2"
           >
             <Image
               src={"/logo.png"}
