@@ -50,9 +50,9 @@ const AboutUsPage: React.FC = () => {
               Founded by Dr. Emma Larsson, a naturopathic physician with over 20
               years of experience, Flourish & Flow was born from a vision to
               create a space where traditional and modern healing practices
-              could coexist harmoniously. Dr. Larsson's journey began in her
-              native Sweden, where she was introduced to the concept of "lagom"
-              - the art of balanced living. This philosophy, combined with the
+              could coexist harmoniously. Dr. Larsson journey began in her
+              native Sweden, where she was introduced to the concept of lagom -
+              the art of balanced living. This philosophy, combined with the
               ideas of flourishing and flowing, became the cornerstone of our
               center.
             </Subtitle>
@@ -66,7 +66,7 @@ const AboutUsPage: React.FC = () => {
             <Subtitle className="text-lg">
               At Flourish & Flow, we believe that true wellness stems from a
               balance between physical health, mental clarity, and spiritual
-              peace. We recognize that each individual's path to wellness is
+              peace. We recognize that each individual path to wellness is
               unique, which is why we offer a diverse range of services and
               personalized treatment plans. Our goal is to help you flourish in
               all aspects of your life and flow effortlessly through your daily
