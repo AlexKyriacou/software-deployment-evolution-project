@@ -23,8 +23,9 @@ const AboutUsPage: React.FC = () => {
               Flourish & Flow Wellness Center, established in 2020, is a
               sanctuary of healing and rejuvenation nestled in the heart of
               Melbourne. Our mission is to empower individuals to flourish in
-              their daily lives and flow seamlessly through life's challenges,
-              nurturing the mind, body, and spirit of our community members.
+              their daily lives and flow seamlessly through life&apos;s
+              challenges, nurturing the mind, body, and spirit of our community
+              members.
             </Subtitle>
           </div>
         </MainSectionBody>

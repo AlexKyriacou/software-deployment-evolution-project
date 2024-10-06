@@ -19,8 +19,8 @@ export default function Home() {
           Welcome to Flourish & Flow Wellness Center, a sanctuary of healing and
           rejuvenation nestled in the heart of Melbourne. Our mission is to
           empower individuals to flourish in their daily lives and flow
-          seamlessly through life's challenges, nurturing the mind, body, and
-          spirit of our community members.
+          seamlessly through life&apos;s challenges, nurturing the mind, body,
+          and spirit of our community members.
         </Subtitle>
       </MainSectionBody>
     </MainSection>
