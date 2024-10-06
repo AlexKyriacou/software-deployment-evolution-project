@@ -1,0 +1,84 @@
+name: 'Apply Terraform configuration'
+description: 'Create or update the Azure infrastructure using Terraform'
+inputs:
+  azure_credentials:
+    description: 'Azure Credentials, stored in a secret on GitHub repository'
+    required: true
+  tf_storage_account:
+    description: 'Terraform storage account name, stored in a secret on GitHub repository'
+    required: true
+  resource_group_name:
+    description: 'Resource group name used for the Terraform backend configuration, stored in a secret on GitHub repository'
+    required: true
+outputs: 
+  resource_group: 
+    description: 'Resource group name where the resources have been deployed'
+    value: ${{ steps.terraform-output.outputs.resource_group }}
+runs:
+  using: "composite"
+  steps:
+    - name: Checkout code
+      uses: actions/checkout@v4
+    - name: Set environment variables
+      env:
+        AZURE_CREDENTIALS: ${{ inputs.azure_credentials }}
+      run: |
+        TAG_NAME=${GITHUB_REF#refs/*/}
+        echo "ENVIRONMENT=${TAG_NAME}" >> $GITHUB_ENV
+        echo "ARM_CLIENT_ID=$(echo $AZURE_CREDENTIALS | jq -r .clientId)" >> $GITHUB_ENV
+        echo "ARM_SUBSCRIPTION_ID=$(echo $AZURE_CREDENTIALS | jq -r .subscriptionId)" >> $GITHUB_ENV
+        echo "ARM_TENANT_ID=$(echo $AZURE_CREDENTIALS | jq -r .tenantId)" >> $GITHUB_ENV
+        echo "APPLICATION_NAME=$(echo ${{ github.repository }} | cut -d'/' -f2)" >> $GITHUB_ENV
+      shell: bash
+    - name: Setup Terraform
+      uses: hashicorp/setup-terraform@v3
+      with:
+        terraform_wrapper: false
+    - name: Azure Login
+      uses: azure/login@v2
+      with:
+        creds: ${{ inputs.azure_credentials }}   
+    - name: Authorize local IP to access the Storage Account
+      uses: azure/CLI@v2
+      env:
+        TF_STORAGE_ACCOUNT: ${{ inputs.tf_storage_account }}
+      with:
+        azcliversion: 2.58.0
+        inlineScript: |
+          az storage account update --name $TF_STORAGE_ACCOUNT --default-action Allow
+          sleep 10
+    - name: Initialize Terraform
+      env:
+        AZURE_CREDENTIALS: ${{ inputs.azure_credentials }}
+        TF_STORAGE_ACCOUNT: ${{ inputs.tf_storage_account }}
+      run: |
+        export ARM_CLIENT_SECRET=$(echo $AZURE_CREDENTIALS | jq -r .clientSecret)
+        for i in {1..30}; do terraform init \
+        -input=false \
+        -backend-config="resource_group_name=${{ inputs.resource_group_name }}" \
+        -backend-config="storage_account_name=$TF_STORAGE_ACCOUNT" \
+        -backend-config="container_name=tfstate" \
+        -backend-config="key=$ENVIRONMENT.terraform.tfstate" \
+        && break || sleep 10; done
+      shell: bash
+      working-directory: '${{ github.workspace }}/terraform'
+    - name: Destroy Terraform Resources
+      env:
+        AZURE_CREDENTIALS: ${{ inputs.azure_credentials }}
+      run: |
+        export ARM_CLIENT_SECRET=$(echo $AZURE_CREDENTIALS | jq -r .clientSecret)
+        terraform destroy \
+        -input=false \
+        -auto-approve \
+        -var="environment=$ENVIRONMENT" \
+        -var="application_name=$APPLICATION_NAME"
+      shell: bash
+      working-directory: '${{ github.workspace }}/terraform'
+    - name: Disable local IP access to the Storage Account
+      uses: azure/CLI@v2
+      env:
+        TF_STORAGE_ACCOUNT: ${{ inputs.tf_storage_account }}
+      with:
+        azcliversion: 2.58.0
+        inlineScript: |
+          az storage account update --name $TF_STORAGE_ACCOUNT --default-action Allow
