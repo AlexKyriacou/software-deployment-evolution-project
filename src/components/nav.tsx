@@ -1,6 +1,7 @@
 import * as React from "react";
 import { ModeToggle } from "@/components/nav/mode-toggle";
 import { MainNav } from "@/components/nav/main-nav";
+import { MobileNav } from "@/components/nav/mobile-nav";
 import Link from "next/link";
 import Image from "next/image";
 
@@ -19,6 +20,7 @@ export default async function Nav() {
             />
           </Link>
           <MainNav />
+          <MobileNav />
           <div className="ml-auto flex space-x-4">
             <ModeToggle />
           </div>
