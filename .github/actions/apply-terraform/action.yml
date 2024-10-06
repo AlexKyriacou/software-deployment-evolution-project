@@ -24,7 +24,7 @@ runs:
         AZURE_CREDENTIALS: ${{ inputs.azure_credentials }}
       run: |
         TAG_NAME=${GITHUB_REF#refs/*/}
-        echo "ENVIRONMENT=${TAG_NAME:4}" >> $GITHUB_ENV
+        echo "ENVIRONMENT=${TAG_NAME}" >> $GITHUB_ENV
         echo "ARM_CLIENT_ID=$(echo $AZURE_CREDENTIALS | jq -r .clientId)" >> $GITHUB_ENV
         echo "ARM_SUBSCRIPTION_ID=$(echo $AZURE_CREDENTIALS | jq -r .subscriptionId)" >> $GITHUB_ENV
         echo "ARM_TENANT_ID=$(echo $AZURE_CREDENTIALS | jq -r .tenantId)" >> $GITHUB_ENV
