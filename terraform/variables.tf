@@ -12,7 +12,7 @@ variable "environment" {
 variable "location" {
   type        = string
   description = "The Azure region where all resources in this example should be created"
-  default     = "australiasoutheast"
+  default     = "australiaeast"
 }
 
 variable "container_registry_name" {
