@@ -1,17 +1,26 @@
 export interface PrivacyPolicyConfig {
   heroSection: HeroSectionConfig;
-  sections: PrivacyPolicySection[];
+  sections: Section[];
 }
 
 export interface TermsAndConditionsConfig {
   heroSection: HeroSectionConfig;
-  sections: TermsAndConditionsSection[];
+  sections: Section[];
 }
 
-export interface TermsAndConditionsSection {
+export interface Section {
   title: TextWithMarkup;
   content: TextWithMarkup[];
   imagePath?: string;
+  subSections?: {
+    title: TextWithMarkup;
+    content: TextWithMarkup[];
+  }[];
+}
+
+export interface ServicesConfig {
+  heroSection: HeroSectionConfig;
+  sections: Section[];
 }
 
 type MarkupElement = {
@@ -27,7 +36,7 @@ export type TextWithMarkup = {
 
 export interface HeroSectionConfig {
   title: TextWithMarkup;
-  subtitle: TextWithMarkup;
-  lastUpdated: TextWithMarkup;
+  subtitle?: TextWithMarkup;
+  lastUpdated?: TextWithMarkup;
   imagePath: string;
 }

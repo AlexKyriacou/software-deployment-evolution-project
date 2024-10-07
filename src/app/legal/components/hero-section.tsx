@@ -19,7 +19,7 @@ export const HeroSection = ({ config }: { config: HeroSectionProps }) => {
           height={300}
           className="dark:rounded-full dark:bg-foreground"
         />
-        <Subtitle>{config.heroSection.subtitle.text}</Subtitle>
+        <Subtitle>{config.heroSection.subtitle?.text}</Subtitle>
       </MainSectionBody>
     </MainSection>
   );

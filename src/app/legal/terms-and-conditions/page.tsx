@@ -1,7 +1,7 @@
 "use client";
 import { HeroSection } from "@/app/legal/components/hero-section";
 import { termsAndConditionsConfig } from "../config";
-import { ContentSection } from "@/app/legal/components/content-section";
+import { ContentSection } from "@/components/common/content-section";
 import Subtitle from "@/components/common/subtitle";
 
 export default function TermsAndConditionsPage() {
@@ -10,7 +10,7 @@ export default function TermsAndConditionsPage() {
       <HeroSection config={termsAndConditionsConfig} />
       <ContentSection sections={termsAndConditionsConfig.sections} />
       <Subtitle className="mt-3 text-sm">
-        {termsAndConditionsConfig.heroSection.lastUpdated.text}
+        {termsAndConditionsConfig.heroSection.lastUpdated?.text}
       </Subtitle>
     </div>
   );
