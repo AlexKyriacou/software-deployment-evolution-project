@@ -22,6 +22,7 @@ const AboutUsPage: React.FC = () => {
     <div>
       <MainSection>
         <MainSectionBody>
+          <Title className="text-center">About Us</Title>
           <Image
             src="/shaking-hands.svg"
             alt="About us"
@@ -29,17 +30,13 @@ const AboutUsPage: React.FC = () => {
             height={300}
             className="dark:rounded-full dark:bg-foreground"
           />
-          <div className="flex flex-col space-y-5">
-            <Title className="text-center">About Us</Title>
-            <Subtitle className="text-lg">
-              Flourish & Flow Wellness Center, established in 2020, is a
-              sanctuary of healing and rejuvenation nestled in the heart of
-              Melbourne. Our mission is to empower individuals to flourish in
-              their daily lives and flow seamlessly through life&apos;s
-              challenges, nurturing the mind, body, and spirit of our community
-              members.
-            </Subtitle>
-          </div>
+          <Subtitle className="text-lg">
+            Flourish & Flow Wellness Center, established in 2020, is a sanctuary
+            of healing and rejuvenation nestled in the heart of Melbourne. Our
+            mission is to empower individuals to flourish in their daily lives
+            and flow seamlessly through life&apos;s challenges, nurturing the
+            mind, body, and spirit of our community members.
+          </Subtitle>
         </MainSectionBody>
       </MainSection>
       <MainSection className="bg-gray-100 dark:bg-purple-900">

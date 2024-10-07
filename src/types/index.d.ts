@@ -8,6 +8,16 @@ export interface TermsAndConditionsConfig {
   sections: Section[];
 }
 
+export interface ServicesConfig {
+  heroSection: HeroSectionConfig;
+  sections: Section[];
+}
+
+export interface FaqConfig {
+  heroSection: HeroSectionConfig;
+  sections: Section[];
+}
+
 export interface Section {
   title: TextWithMarkup;
   content: TextWithMarkup[];
@@ -16,11 +26,6 @@ export interface Section {
     title: TextWithMarkup;
     content: TextWithMarkup[];
   }[];
-}
-
-export interface ServicesConfig {
-  heroSection: HeroSectionConfig;
-  sections: Section[];
 }
 
 type MarkupElement = {
@@ -39,10 +44,4 @@ export interface HeroSectionConfig {
   subtitle?: TextWithMarkup;
   lastUpdated?: TextWithMarkup;
   imagePath: string;
-}
-
-export interface TermsAndConditionsSection {
-  title: TextWithMarkup;
-  content: TextWithMarkup[];
-  imagePath?: string;
 }

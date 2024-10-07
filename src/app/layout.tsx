@@ -3,6 +3,7 @@ import "./globals.css";
 import Nav from "@/components/nav";
 import { ThemeProvider } from "@/components/theme-provider";
 import { Footer } from "@/components/footer";
+import { Toaster } from "@/components/ui/toaster";
 
 export const metadata: Metadata = {
   title: "Flourish & Flow",
@@ -27,6 +28,7 @@ export default function RootLayout({
             <Nav />
           </header>
           <main className="flex-1">{children}</main>
+          <Toaster />
           <Footer />
         </ThemeProvider>
       </body>

@@ -1,11 +1,11 @@
-import { TermsAndConditionsSection, TextWithMarkup } from "@/types";
+import { Section, TextWithMarkup } from "@/types";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import Typography from "@/components/ui/typography";
 import { Key } from "react";
 import Image from "next/image";
 
 interface SectionCardProps {
-  section: TermsAndConditionsSection;
+  section: Section;
 }
 
 export const SectionCard: React.FC<SectionCardProps> = ({ section }) => {
