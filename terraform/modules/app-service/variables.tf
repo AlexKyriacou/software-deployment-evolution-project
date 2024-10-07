@@ -37,3 +37,8 @@ variable "container_tag" {
   type        = string
   description = "The tag of the container"
 }
+
+variable "database_url" {
+  type        = string
+  description = "The URL to the database"
+}

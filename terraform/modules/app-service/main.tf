@@ -60,5 +60,7 @@ resource "azurerm_linux_web_app" "application" {
   app_settings = {
     "WEBSITES_ENABLE_APP_SERVICE_STORAGE" = "false"
     "WEBSITES_PORT"                       = "3000"
+
+    "DATABASE_URL"      = var.database_url
   }
 }

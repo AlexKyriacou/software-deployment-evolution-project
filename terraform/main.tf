@@ -37,4 +37,14 @@ module "application" {
   container_registry_username = var.container_registry_username
   container_registry_password = var.container_registry_password
   container_tag               = var.container_tag
+  database_url                = module.database.database_url
+}
+
+module "database" {
+  source            = "./modules/postgresql"
+  resource_group    = azurerm_resource_group.main.name
+  application_name  = var.application_name
+  environment       = var.environment
+  location          = var.location
+  high_availability = false
 }
