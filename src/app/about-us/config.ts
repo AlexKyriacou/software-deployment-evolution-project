@@ -1,4 +1,5 @@
-export const AboutUsConfig = {
+import { AboutUsConfig } from "@/types";
+export const aboutUsConfig: AboutUsConfig = {
   carousels: [
     {
       src: "/yoga.jpg",
@@ -24,6 +25,38 @@ export const AboutUsConfig = {
       src: "/shop.webp",
       alt: "Retail",
       href: "https://cleanmarket.com/cdn/shop/files/wynn-las-vegas-wellness-shop.jpg?v=1692062755",
+    },
+  ],
+  testimonials: [
+    {
+      name: "Alice Johnson",
+      content:
+        "The facilities are top-notch and the staff is incredibly friendly. Highly recommend!",
+    },
+    {
+      name: "Michael Smith",
+      content:
+        "A wonderful place to unwind and rejuvenate. The yoga classes are fantastic!",
+    },
+    {
+      name: "Emily Davis",
+      content:
+        "I love the variety of services offered here. The treatment rooms are especially relaxing.",
+    },
+    {
+      name: "David Brown",
+      content:
+        "Great gym with modern equipment. The atmosphere is very motivating.",
+    },
+    {
+      name: "Sophia Wilson",
+      content:
+        "The cafe has delicious healthy options. Perfect for a post-workout snack.",
+    },
+    {
+      name: "Oliver Miller",
+      content:
+        "The retail space has a great selection of wellness products. I always find something I love.",
     },
   ],
 };

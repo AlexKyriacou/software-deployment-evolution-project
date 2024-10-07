@@ -13,7 +13,7 @@ import {
   CarouselNext,
   CarouselPrevious,
 } from "@/components/ui/carousel";
-import { AboutUsConfig } from "./config";
+import { aboutUsConfig } from "./config";
 import Autoplay from "embla-carousel-autoplay";
 
 const AboutUsPage: React.FC = () => {
@@ -30,7 +30,7 @@ const AboutUsPage: React.FC = () => {
             height={300}
             className="dark:rounded-full dark:bg-foreground"
           />
-          <Subtitle className="text-lg">
+          <Subtitle>
             Flourish & Flow Wellness Center, established in 2020, is a sanctuary
             of healing and rejuvenation nestled in the heart of Melbourne. Our
             mission is to empower individuals to flourish in their daily lives
@@ -43,7 +43,7 @@ const AboutUsPage: React.FC = () => {
         <MainSectionBody>
           <div className="flex flex-col space-y-5">
             <Title className="text-center">Our Story</Title>
-            <Subtitle className="text-lg">
+            <Subtitle>
               Founded by Dr. Emma Larsson, a naturopathic physician with over 20
               years of experience, Flourish & Flow was born from a vision to
               create a space where traditional and modern healing practices
@@ -60,7 +60,7 @@ const AboutUsPage: React.FC = () => {
         <MainSectionBody>
           <div className="flex flex-col space-y-5">
             <Title className="text-center">Our Philosophy</Title>
-            <Subtitle className="text-lg">
+            <Subtitle>
               At Flourish & Flow, we believe that true wellness stems from a
               balance between physical health, mental clarity, and spiritual
               peace. We recognize that each individual path to wellness is
@@ -76,7 +76,7 @@ const AboutUsPage: React.FC = () => {
         <MainSectionBody>
           <div className="flex flex-col space-y-5">
             <Title className="text-center">Our Team</Title>
-            <Subtitle className="text-lg">
+            <Subtitle>
               Our center boasts a team of over 30 highly qualified
               professionals, including:
             </Subtitle>
@@ -90,7 +90,7 @@ const AboutUsPage: React.FC = () => {
               <li>Mental Health Counselors</li>
               <li>Hydrotherapy Specialists</li>
             </ul>
-            <Subtitle className="text-lg">
+            <Subtitle>
               Each member of our team is not only an expert in their field but
               also shares our commitment to holistic, client-centered care,
               helping you flourish and flow.
@@ -103,11 +103,11 @@ const AboutUsPage: React.FC = () => {
           <div className="grid carousels-center grid-cols-2">
             <div className="flex flex-col space-y-5">
               <Title className="text-center">Our Facility</Title>
-              <Subtitle className="text-lg">
+              <Subtitle>
                 Spanning 15,000 square feet, our state-of-the-art facility
                 includes:
               </Subtitle>
-              <ul className="text-muted-foreground list-disc list-inside">
+              <ul className="text-foreground list-disc list-inside">
                 <li>5 fully-equipped yoga and meditation studios</li>
                 <li>10 private treatment rooms</li>
                 <li>
@@ -131,7 +131,7 @@ const AboutUsPage: React.FC = () => {
               opts={{ align: "start", loop: true }}
             >
               <CarouselContent>
-                {AboutUsConfig.carousels.map((carousel, index) => (
+                {aboutUsConfig.carousels.map((carousel, index) => (
                   <CarouselItem key={index}>
                     <Image
                       src={carousel.src}
