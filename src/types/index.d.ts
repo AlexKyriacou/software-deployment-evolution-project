@@ -45,3 +45,13 @@ export interface HeroSectionConfig {
   lastUpdated?: TextWithMarkup;
   imagePath: string;
 }
+
+interface Video {
+  id: number;
+  title: string;
+  src: string;
+}
+
+export interface MediaConfig {
+  videos: Video[];
+}
