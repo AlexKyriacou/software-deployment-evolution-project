@@ -33,11 +33,15 @@ module "application" {
   application_name            = var.application_name
   environment                 = var.environment
   location                    = var.location
+
   container_registry_name     = var.container_registry_name
   container_registry_username = var.container_registry_username
   container_registry_password = var.container_registry_password
   container_tag               = var.container_tag
+
   database_url                = module.database.database_url
+
+  azure_application_insights_connection_string = module.application-insights.azure_application_insights_connection_string
 }
 
 module "database" {
@@ -47,4 +51,12 @@ module "database" {
   environment       = var.environment
   location          = var.location
   high_availability = false
+}
+
+module "application-insights" {
+  source           = "./modules/application-insights"
+  resource_group   = azurerm_resource_group.main.name
+  application_name = var.application_name
+  environment      = var.environment
+  location         = var.location
 }

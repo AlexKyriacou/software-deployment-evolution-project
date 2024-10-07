@@ -42,3 +42,8 @@ variable "database_url" {
   type        = string
   description = "The URL to the database"
 }
+
+variable "azure_application_insights_connection_string" {
+  type        = string
+  description = "The Azure Application Insights connection string"
+}

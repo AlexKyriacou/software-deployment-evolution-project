@@ -61,6 +61,8 @@ resource "azurerm_linux_web_app" "application" {
     "WEBSITES_ENABLE_APP_SERVICE_STORAGE" = "false"
     "WEBSITES_PORT"                       = "3000"
 
+    "APPINSIGHTS_CONNECTIONSTRING" = var.azure_application_insights_connection_string
+
     "DATABASE_URL"      = var.database_url
   }
 }
