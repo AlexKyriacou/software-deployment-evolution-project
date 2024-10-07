@@ -42,7 +42,7 @@ const AboutUsPage: React.FC = () => {
           </div>
         </MainSectionBody>
       </MainSection>
-      <MainSection className="bg-gray-100">
+      <MainSection className="bg-gray-100 dark:bg-purple-900">
         <MainSectionBody>
           <div className="flex flex-col space-y-5">
             <Title className="text-center">Our Story</Title>
@@ -75,7 +75,7 @@ const AboutUsPage: React.FC = () => {
           </div>
         </MainSectionBody>
       </MainSection>
-      <MainSection className="bg-gray-100">
+      <MainSection className="bg-gray-100 dark:bg-purple-900">
         <MainSectionBody>
           <div className="flex flex-col space-y-5">
             <Title className="text-center">Our Team</Title>
@@ -83,7 +83,7 @@ const AboutUsPage: React.FC = () => {
               Our center boasts a team of over 30 highly qualified
               professionals, including:
             </Subtitle>
-            <ul className="text-muted-foreground list-disc list-inside">
+            <ul className="text-foreground list-disc list-inside">
               <li>Naturopathic Doctors</li>
               <li>Registered Massage Therapists</li>
               <li>Certified Yoga and Meditation Instructors</li>

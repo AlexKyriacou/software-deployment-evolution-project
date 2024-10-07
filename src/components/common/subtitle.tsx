@@ -7,7 +7,7 @@ interface SubtitleProps {
 
 const Subtitle: React.FC<SubtitleProps> = ({ children, className }) => {
   return (
-    <div className={cn("text-muted-foreground", className)}>
+    <div className={cn("text-foreground", className)}>
       <p>{children}</p>
     </div>
   );

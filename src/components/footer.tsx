@@ -20,13 +20,13 @@ export function Footer() {
         </p>
         <nav className="flex space-x-4 sm:mt-0">
           <Link
-            href="/legal"
+            href="/legal/privacy-policy"
             className="text-sm text-muted-foreground hover:underline"
           >
             Privacy Policy
           </Link>
           <Link
-            href="/legal"
+            href="/legal/terms-and-conditions"
             className="text-sm text-muted-foreground hover:underline"
           >
             Terms of Service
