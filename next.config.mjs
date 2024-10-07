@@ -6,7 +6,16 @@ const nextConfig = {
     fetches: {
       fullUrl: true,
     },
-  }
+  },
+  images: {
+    disableStaticImages: true,
+    remotePatterns: [
+      {
+        protocol: 'https',
+        hostname: '**',
+      },
+    ],
+  },
 };
 
 export default nextConfig;

@@ -14,20 +14,20 @@ export function Footer() {
             className="mb-3 dark:invert"
           />
         </Link>
-        <p className="mb-3 text-center text-sm text-muted-foreground sm:text-left">
+        <p className="mb-3 text-center text-md text-muted-foreground sm:text-left">
           &copy; {new Date().getFullYear()} Flourish & Flow. All rights
           reserved.
         </p>
         <nav className="flex space-x-4 sm:mt-0">
           <Link
             href="/legal/privacy-policy"
-            className="text-sm text-muted-foreground hover:underline"
+            className="text-md text-muted-foreground hover:underline"
           >
             Privacy Policy
           </Link>
           <Link
             href="/legal/terms-and-conditions"
-            className="text-sm text-muted-foreground hover:underline"
+            className="text-md text-muted-foreground hover:underline"
           >
             Terms of Service
           </Link>

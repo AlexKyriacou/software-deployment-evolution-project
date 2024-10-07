@@ -25,6 +25,7 @@ export default function ContactUsPage() {
     setName("");
     setEmail("");
     setMessage("");
+    //TODO: Send save messages to DB
   }
 
   return (

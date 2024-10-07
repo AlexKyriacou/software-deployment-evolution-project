@@ -9,7 +9,7 @@ export default function TermsAndConditionsPage() {
     <div className="mx-auto mb-10 max-w-7xl px-10">
       <HeroSection config={termsAndConditionsConfig} />
       <ContentSection sections={termsAndConditionsConfig.sections} />
-      <Subtitle className="mt-3 text-sm">
+      <Subtitle className="mt-3">
         {termsAndConditionsConfig.heroSection.lastUpdated?.text}
       </Subtitle>
     </div>

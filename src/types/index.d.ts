@@ -1,3 +1,17 @@
+interface Carousel {
+  src: string;
+  alt: string;
+  href: string;
+}
+
+export interface AboutUsConfig {
+  carousels: Carousel[];
+  testimonials: {
+    name: string;
+    content: string;
+  }[];
+}
+
 export interface PrivacyPolicyConfig {
   heroSection: HeroSectionConfig;
   sections: Section[];
@@ -52,6 +66,14 @@ interface Video {
   src: string;
 }
 
+interface Blog {
+  id: number;
+  title: string;
+  src: string;
+  image: string;
+}
+
 export interface MediaConfig {
   videos: Video[];
+  blogs: Blog[];
 }

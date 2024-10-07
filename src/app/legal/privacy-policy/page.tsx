@@ -9,7 +9,7 @@ export default function PrivacyPolicyPage() {
     <div className="mx-auto mb-10 max-w-7xl px-10">
       <HeroSection config={privacyPolicyConfig} />
       <ContentSection sections={privacyPolicyConfig.sections} />
-      <Subtitle className="mt-3 text-sm">
+      <Subtitle className="mt-3">
         {privacyPolicyConfig.heroSection.lastUpdated?.text}
       </Subtitle>
     </div>

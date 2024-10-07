@@ -22,11 +22,11 @@ export const ContentSection: React.FC<ContentSectionProps> = ({
     <Accordion type="multiple" defaultValue={defaultOpen} className="mt-5">
       {sections.map((section, index) => (
         <AccordionItem key={index} value={`item-${index}`}>
-          <AccordionTrigger className="text-left text-lg">
+          <AccordionTrigger className="text-left text-xl font-extrabold">
             {section.title.text}
           </AccordionTrigger>
           <AccordionContent className="grid grid-cols-3">
-            <div className="col-span-2">
+            <div className={section.imagePath ? "col-span-2" : "col-span-3"}>
               {section.content.map((paragraph, paragraphIndex) => (
                 <p key={paragraphIndex} className="mb-4">
                   {paragraph.text}
@@ -39,7 +39,7 @@ export const ContentSection: React.FC<ContentSectionProps> = ({
                       <h2 className="font-bold mb-2">{paragraph.title.text}</h2>
                       <ul
                         key={paragraphIndex}
-                        className="list-disc list-inside space-y-2 mb-2"
+                        className="list-disc list-inside space-y-2 mb-4"
                       >
                         {paragraph.content.map((subParagraph, subIndex) => (
                           <li key={subIndex}>{subParagraph.text}</li>
@@ -50,8 +50,8 @@ export const ContentSection: React.FC<ContentSectionProps> = ({
                 </div>
               )}
             </div>
-            <div className="flex col-span-1 justify-center">
-              {section.imagePath && (
+            {section.imagePath && (
+              <div className="flex col-span-1 justify-center">
                 <Image
                   src={section.imagePath}
                   alt={section.title.text}
@@ -59,8 +59,8 @@ export const ContentSection: React.FC<ContentSectionProps> = ({
                   height={250}
                   className="mt-4"
                 />
-              )}
-            </div>
+              </div>
+            )}
           </AccordionContent>
         </AccordionItem>
       ))}
