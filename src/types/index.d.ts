@@ -40,3 +40,9 @@ export interface HeroSectionConfig {
   lastUpdated?: TextWithMarkup;
   imagePath: string;
 }
+
+export interface TermsAndConditionsSection {
+  title: TextWithMarkup;
+  content: TextWithMarkup[];
+  imagePath?: string;
+}
