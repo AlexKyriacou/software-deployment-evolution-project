@@ -11,7 +11,7 @@ const MainSectionBody: React.FC<MainSectionBodyProps> = ({
   className,
 }) => {
   const bodyClasses = cn(
-    "mx-auto flex max-w-7xl flex-col items-center justify-center px-4 py-12 md:space-x-6 md:px-8",
+    "mx-auto flex max-w-7xl flex-col items-center justify-center  space-y-6 px-4 py-12 md:space-x-6 md:px-8",
     className
   );
 

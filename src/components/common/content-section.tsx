@@ -57,7 +57,7 @@ export const ContentSection: React.FC<ContentSectionProps> = ({
                   alt={section.title.text}
                   width={250}
                   height={250}
-                  className="mt-4"
+                  className="dark:rounded-full dark:bg-foreground"
                 />
               </div>
             )}
