@@ -35,7 +35,7 @@ export const ContentSection: React.FC<ContentSectionProps> = ({
               {section.subSections && section.subSections.length > 0 && (
                 <div>
                   {section.subSections.map((paragraph, paragraphIndex) => (
-                    <div>
+                    <div key={paragraphIndex}>
                       <h2 className="font-bold mb-2">{paragraph.title.text}</h2>
                       <ul
                         key={paragraphIndex}
