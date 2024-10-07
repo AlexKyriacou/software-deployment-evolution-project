@@ -95,7 +95,7 @@ const AboutUsPage: React.FC = () => {
       </MainSection>
       <MainSection>
         <MainSectionBody>
-          <div className="grid carousels-center grid-cols-2">
+          <div className="flex flex-col md:flex-row md:space-x-5">
             <div className="flex flex-col space-y-5">
               <Title className="text-center">Our Facility</Title>
               <Subtitle>
@@ -133,7 +133,7 @@ const AboutUsPage: React.FC = () => {
                       alt={carousel.alt}
                       width={800}
                       height={600}
-                      className="mx-auto mt-5 w-1/2 object-cover dark:bg-foreground"
+                      className="mx-auto mt-5 object-cover dark:bg-foreground lg:w-2/3 "
                     />
                   </CarouselItem>
                 ))}

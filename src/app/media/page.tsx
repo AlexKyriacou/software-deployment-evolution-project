@@ -65,7 +65,7 @@ export default function MediaPage() {
           />
         </MainSectionBody>
       </MainSection>
-      <Card className="mt-5 w-full p-5">
+      <Card className="m-5 p-5">
         <div className="flex flex-row items-center justify-between">
           <CardTitle className="text-xl">Useful Videos</CardTitle>
           <Dialog>
@@ -132,7 +132,7 @@ export default function MediaPage() {
           </CardContent>
         </div>
       </Card>
-      <Card className="mt-5 w-full p-5">
+      <Card className="m-5 p-5">
         <div className="flex flex-row items-center justify-between">
           <CardTitle className="text-xl">Latest Blogs</CardTitle>
           <Dialog>

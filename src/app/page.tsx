@@ -64,11 +64,9 @@ export default function Home() {
       <div className="mt-10 text-md text-purple-500 text-center">
         <p>
           Disclaimer: This is a fictitious clinic created for the purpose of
-          demonstration for a university deployment unit.{" "}
-        </p>
-        <p>
-          All content has either been AI generated or referenced. In the case of
-          YouTube videos and blogs, URLs have been provided.
+          demonstration for a university deployment unit. All content has either
+          been AI generated or referenced. In the case of YouTube videos and
+          blogs, URLs have been provided.
         </p>
       </div>
     </div>

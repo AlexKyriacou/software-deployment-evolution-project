@@ -25,8 +25,8 @@ export const ContentSection: React.FC<ContentSectionProps> = ({
           <AccordionTrigger className="text-left text-xl font-extrabold">
             {section.title.text}
           </AccordionTrigger>
-          <AccordionContent className="grid grid-cols-3">
-            <div className={section.imagePath ? "col-span-2" : "col-span-3"}>
+          <AccordionContent className="grid grid-cols-1 md:grid-cols-3">
+            <div className={section.imagePath ? "md:col-span-2" : "col-span-1"}>
               {section.content.map((paragraph, paragraphIndex) => (
                 <p key={paragraphIndex} className="mb-4">
                   {paragraph.text}
@@ -51,7 +51,7 @@ export const ContentSection: React.FC<ContentSectionProps> = ({
               )}
             </div>
             {section.imagePath && (
-              <div className="flex col-span-1 justify-center">
+              <div className="flex justify-center mt-4 md:mt-0 md:col-span-1">
                 <Image
                   src={section.imagePath}
                   alt={section.title.text}
