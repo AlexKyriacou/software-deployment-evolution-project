@@ -30,12 +30,14 @@ jobs:
           az acr login -n ${{ secrets.container_registry_name }}.azurecr.io
           docker push ${{ secrets.container_registry_name }}.azurecr.io/$REPO_NAME/$REPO_NAME:${{ github.sha }}
         shell: bash
+
   build-and-deploy:
     name: Build and Deploy
     needs: publish
     runs-on: ubuntu-22.04
     outputs:
       resource_group: ${{ steps.infrastructure-deployment.outputs.resource_group }}
+      application_url: ${{ steps.infrastructure-deployment.outputs.application_url }}
     steps:
       - uses: actions/checkout@v4
       - name: Apply Terraform configuration
@@ -46,3 +48,33 @@ jobs:
           tf_storage_account: ${{ secrets.TF_STORAGE_ACCOUNT }}
           resource_group_name: ${{ secrets.RESOURCE_GROUP_NAME }}
           container_registry_name: ${{ secrets.CONTAINER_REGISTRY_NAME }}
+  
+  health-check:
+    name: Health Check
+    needs: build-and-deploy
+    runs-on: ubuntu-latest
+    steps:
+      - name: Perform Health Check
+        env:
+          APPLICATION_URL: ${{ needs.build-and-deploy.outputs.application_url }}
+        run: |
+          MAX_RETRIES=10
+          RETRY_INTERVAL=30
+          
+          for i in $(seq 1 $MAX_RETRIES); do
+            HTTP_STATUS=$(curl -s -o /dev/null -w "%{http_code}" $APPLICATION_URL)
+            if [ $HTTP_STATUS -eq 200 ]; then
+              echo "Health check passed. Received HTTP 200 from $APPLICATION_URL"
+              exit 0
+            else
+              echo "Attempt $i: Health check failed. Received HTTP $HTTP_STATUS from $APPLICATION_URL"
+              if [ $i -lt $MAX_RETRIES ]; then
+                echo "Retrying in $RETRY_INTERVAL seconds..."
+                sleep $RETRY_INTERVAL
+              fi
+            fi
+          done
+          
+          echo "Health check failed after $MAX_RETRIES attempts."
+          exit 1
+        shell: bash

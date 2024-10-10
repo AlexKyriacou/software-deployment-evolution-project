@@ -89,6 +89,7 @@ runs:
         export ARM_CLIENT_SECRET=$(echo $AZURE_CREDENTIALS | jq -r .clientSecret)
         echo $(terraform output -json) > terraform-output.json
         echo "resource_group=$(jq -r .resource_group.value terraform-output.json)" >> $GITHUB_OUTPUT
+        echo "application_url=$(jq -r .application_url.value terraform-output.json)" >> $GITHUB_OUTPUT
       working-directory: '${{ github.workspace }}/terraform'
       shell: bash
     - name: Disable local IP access to the Storage Account
