@@ -17,6 +17,9 @@ outputs:
   resource_group: 
     description: 'Resource group name where the resources have been deployed'
     value: ${{ steps.terraform-output.outputs.resource_group }}
+  application_url:
+    description: 'URL of the deployed application'
+    value: ${{ steps.terraform-output.outputs.application_url }}
 runs:
   using: "composite"
   steps:
