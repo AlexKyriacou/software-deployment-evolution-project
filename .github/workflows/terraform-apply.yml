@@ -55,12 +55,11 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: Perform Health Check
-        env:
-          APPLICATION_URL: ${{ needs.build-and-deploy.outputs.application_url }}
         run: |
           MAX_RETRIES=10
           RETRY_INTERVAL=30
-          
+          APPLICATION_URL=${{ needs.build-and-deploy.outputs.application_url }}
+
           for i in $(seq 1 $MAX_RETRIES); do
             HTTP_STATUS=$(curl -s -o /dev/null -w "%{http_code}" $APPLICATION_URL)
             if [ $HTTP_STATUS -eq 200 ]; then
