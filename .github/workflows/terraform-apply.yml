@@ -1,9 +1,9 @@
-name: GitOps
+name: CI/CD Docker and Terraform Deployment
 
 on:
   push:
     branches:
-      - '*'
+      - "*"
 
 jobs:
   publish:
@@ -48,7 +48,7 @@ jobs:
           tf_storage_account: ${{ secrets.TF_STORAGE_ACCOUNT }}
           resource_group_name: ${{ secrets.RESOURCE_GROUP_NAME }}
           container_registry_name: ${{ secrets.CONTAINER_REGISTRY_NAME }}
-  
+
   health-check:
     name: Health Check
     needs: build-and-deploy
@@ -73,7 +73,7 @@ jobs:
               fi
             fi
           done
-          
+
           echo "Health check failed after $MAX_RETRIES attempts."
           exit 1
         shell: bash

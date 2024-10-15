@@ -1,7 +1,9 @@
+name: Semantic CI Release
+
 on:
   push:
     branches:
-    - main
+      - main
 jobs:
   release:
     name: release
